@@ -2,17 +2,16 @@
 
 ## usersテーブル
 
-| Column                | Type   | Options             |
-| --------------------- | ------ | ------------------- |
-| nickname              | string | null: false         |
-| email                 | string | null: false, unique |
-| password              | string | null: false         |
-| password_confirmation | string | null: false         |
-| first_name            | string | null: false         |
-| last_name             | string | null: false         |
-| first_name_kana       | string | null: false         |
-| last_name_kana        | string | null: false         |
-| birthday              | date   | null: false         |
+| Column                | Type   | Options                   |
+| --------------------- | ------ | ------------------------- |
+| nickname              | string | null: false               |
+| email                 | string | null: false, unique: true |
+| encrypted_password    | string | null: false               |
+| first_name            | string | null: false               |
+| last_name             | string | null: false               |
+| first_name_kana       | string | null: false               |
+| last_name_kana        | string | null: false               |
+| birthday              | date   | null: false               |
 
 ## Association
 
@@ -25,11 +24,11 @@
 | ------------------ | ---------- | ------------------------------ |
 | title              | string     | null: false                    |
 | item_info          | text       | null: false                    |
-| item_tag           | string     | null: false                    |
-| item_condition     | string     | null: false                    |
-| invoice_option     | string     | null: false                    |
-| invoice_city       | string     | null: false                    |
-| invoice_day        | string     | null: false                    |
+| item_tag           | integer    | null: false                    |
+| item_condition     | integer    | null: false                    |
+| invoice_option     | integer    | null: false                    |
+| invoice_city       | integer    | null: false                    |
+| invoice_day        | integer    | null: false                    |
 | price              | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
 
@@ -56,7 +55,7 @@
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | postcode           | string     | null: false                    |
-| prefecture_id      | string     | null: false                    |
+| invoice_city       | string     | null: false                    |
 | city               | string     | null: false                    |
 | block              | string     | null: false                    |
 | building           | string     | null: false                    |
