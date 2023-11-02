@@ -23,12 +23,12 @@
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | title              | string     | null: false                    |
-| item_info          | text       | null: false                    |
-| item_tag           | integer    | null: false                    |
-| item_condition     | integer    | null: false                    |
-| invoice_option     | integer    | null: false                    |
-| invoice_city       | integer    | null: false                    |
-| invoice_day        | integer    | null: false                    |
+| info_id            | text       | null: false                    |
+| tag_id             | integer    | null: false                    |
+| condition_id       | integer    | null: false                    |
+| invoice_option_id  | integer    | null: false                    |
+| prefecture_id      | integer    | null: false                    |
+| invoice_day_id     | integer    | null: false                    |
 | price              | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
 
@@ -55,10 +55,10 @@
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | postcode           | string     | null: false                    |
-| invoice_city       | string     | null: false                    |
+| prefecture_id      | integer    | null: false                    |
 | city               | string     | null: false                    |
 | block              | string     | null: false                    |
-| building           | string     | null: false                    |
+| building           | string     |                                |
 | phone_number       | string     | null: false                    |
 | purchase           | references | null: false, foreign_key: true |
 
