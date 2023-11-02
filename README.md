@@ -23,7 +23,7 @@
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | title              | string     | null: false                    |
-| info_id            | text       | null: false                    |
+| info               | text       | null: false                    |
 | tag_id             | integer    | null: false                    |
 | condition_id       | integer    | null: false                    |
 | invoice_option_id  | integer    | null: false                    |
