@@ -4,6 +4,7 @@ class Item < ApplicationRecord
 
   belongs_to :user
   has_one :purchase
+  has_one_attaached :image
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :tag
   belongs_to :condition
