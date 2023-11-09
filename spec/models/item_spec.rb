@@ -14,6 +14,9 @@ RSpec.describe Item, type: :model do
 
     context '商品出品ができないとき' do
       it 'imageが空では出品できない' do
+        @item.image = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Image can't be blank")
       end
       it 'titleが空では出品できない' do
         @item.title = ''
@@ -27,6 +30,18 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Info can't be blank")
       end
 
+      it 'tag_idが空では出品できない' do
+        @item.tag_id = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Tag can't be blank")
+      end
+
+      it 'tag_idが1では出品できない' do
+        @item.tag_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Tag can't be blank")
+      end
+      
       it 'condition_idが空では出品できない' do
         @item.condition_id = nil
         @item.valid?
