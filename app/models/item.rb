@@ -1,13 +1,9 @@
 class Item < ApplicationRecord
-  validates :image, :title, :info, :price, presence: true
+  validates :image, :title, :info, presence: true
   validates :tag_id, :condition_id, :invoice_option_id, :prefecture_id, :invoice_day_id, numericality: { other_than: 1 ,message: "can't be blank"}
-  validate :price_within_range
 
-  def price_within_range
-    unless price.between?(300, 9_999_999)
-      errors.add(:price, "は¥300から¥9,999,999の間の半角数字で指定してください")
-    end
-  end
+  validates :price, presence: true, 
+                    numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: "は¥300から¥9,999,999の範囲内で指定してください" }
 
   belongs_to :user
   has_one :purchase
