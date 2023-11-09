@@ -1,9 +1,8 @@
 class ItemsController < ApplicationController
-  def index
-    @items = Item.all
-  end
-
   before_action :authenticate_user!, only: [:new, :create]
+  
+  def index
+  end
 
   def new
     @item = Item.new

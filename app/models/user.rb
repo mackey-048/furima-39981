@@ -10,5 +10,4 @@ class User < ApplicationRecord
   validates :first_name_kana, :last_name_kana, format: { with: /\A[\p{katakana}ー]+\z/, message: "はカタカナで入力してください" }
   validates :first_name, :last_name, format: { with: /\A[ぁ-んァ-ヶー一-龠々ー]+\z/, message: "は漢字、ひらがな、カタカナのみを含めてください" }
   has_many  :items
-  has_many  :purchases
 end
