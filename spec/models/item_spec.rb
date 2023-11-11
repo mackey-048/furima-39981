@@ -41,7 +41,7 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Tag can't be blank")
       end
-      
+
       it 'condition_idが空では出品できない' do
         @item.condition_id = nil
         @item.valid?
@@ -99,25 +99,25 @@ RSpec.describe Item, type: :model do
       it 'priceが299以下では登録できない' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price は半角数字の¥300から¥9,999,999の範囲内で指定してください")
+        expect(@item.errors.full_messages).to include('Price は半角数字の¥300から¥9,999,999の範囲内で指定してください')
       end
 
       it 'priceが10000000以上では登録できない' do
-        @item.price = 10000001
+        @item.price = 10_000_001
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price は半角数字の¥300から¥9,999,999の範囲内で指定してください")
+        expect(@item.errors.full_messages).to include('Price は半角数字の¥300から¥9,999,999の範囲内で指定してください')
       end
 
       it 'priceが数字ではなく文字であれば登録できない' do
         @item.price = 'abc'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price は半角数字の¥300から¥9,999,999の範囲内で指定してください")
+        expect(@item.errors.full_messages).to include('Price は半角数字の¥300から¥9,999,999の範囲内で指定してください')
       end
 
       it 'priceが全角数字では登録できない' do
         @item.price = '１０００'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price は半角数字の¥300から¥9,999,999の範囲内で指定してください")
+        expect(@item.errors.full_messages).to include('Price は半角数字の¥300から¥9,999,999の範囲内で指定してください')
       end
       it 'userが紐付いてないと出品できない' do
         @item.user = nil
