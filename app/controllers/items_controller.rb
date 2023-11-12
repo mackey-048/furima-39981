@@ -13,6 +13,12 @@ class ItemsController < ApplicationController
   def show
   end
 
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy
+    redirect_to root_path
+  end
+
   def edit
     redirect_to root_path if current_user.id != @item.user_id || @orders.present?
   end
