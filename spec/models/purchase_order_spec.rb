@@ -18,7 +18,7 @@ RSpec.describe PurchaseOrder, type: :model do
       end
     end
 
-    context '無いように問題がある場合' do
+    context '内容に問題がある場合' do
       it 'postcodeが空では保存できない' do
         @purchase_order.postcode = nil
         @purchase_order.valid?
