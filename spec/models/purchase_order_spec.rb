@@ -12,7 +12,7 @@ RSpec.describe PurchaseOrder, type: :model do
       it 'すべての値が正しく入力されていれば保存できること' do
         expect(@purchase_order).to be_valid
       end
-      it 'buildingはからでも保存できること' do
+      it 'buildingは空でも保存できること' do
         @purchase_order.building = nil
         expect(@purchase_order).to be_valid
       end
@@ -63,6 +63,11 @@ RSpec.describe PurchaseOrder, type: :model do
         @purchase_order.item_id = nil
         @purchase_order.valid?
         expect(@purchase_order.errors.full_messages).to include("Item can't be blank")
+      end
+      it 'tokenが空では登録できない' do
+        @purchase_order.token = nil
+        @purchase_order.valid?
+        expect(@purchase_order.errors.full_messages).to include("Token can't be blank")
       end
       end
 

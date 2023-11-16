@@ -5,6 +5,7 @@ class PurchasesController < ApplicationController
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
     @purchase_order = PurchaseOrder.new
+    redirect_to root_path if current_user.id == @item.user_id || @item.purchase.present?
   end
 
   def new
