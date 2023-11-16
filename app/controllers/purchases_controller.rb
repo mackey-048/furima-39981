@@ -8,10 +8,6 @@ class PurchasesController < ApplicationController
     redirect_to root_path if current_user.id == @item.user_id || @item.purchase.present?
   end
 
-  def new
-    @purchase_order = PurchaseOrder.new
-  end
-
   def create
     @purchase_order = PurchaseOrder.new(purchase_params)
     if @purchase_order.valid?
@@ -27,7 +23,7 @@ end
   private
 
   def purchase_params
-    params.require(:purchase_order).permit(:postcode, :prefecture_id, :city, :block, :building, :phone_number, :price).merge(user_id: current_user.id, item_id: @item.id, token: params[:token])
+    params.require(:purchase_order).permit(:postcode, :prefecture_id, :city, :block, :building, :phone_number).merge(user_id: current_user.id, item_id: @item.id, token: params[:token])
   end
 
   def find_item

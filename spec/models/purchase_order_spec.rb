@@ -49,10 +49,20 @@ RSpec.describe PurchaseOrder, type: :model do
         @purchase_order.valid?
         expect(@purchase_order.errors.full_messages).to include("Phone number can't be blank")
       end
-      it 'phone_numberは10桁以上11桁以上の整数でないと保存できない' do
+      it '電話番号が9桁以下では購入できない' do
         @purchase_order.phone_number = '123456789'
         @purchase_order.valid?
-        expect(@purchase_order.errors.full_messages).to include("Phone number must be greater than or equal to 1000000000")
+        expect(@purchase_order.errors.full_messages).to include("Phone number は10桁または11桁の数字で入力してください")
+      end
+      it '電話番号が12桁以上では購入できない' do
+        @purchase_order.phone_number = '123456789012'
+        @purchase_order.valid?
+        expect(@purchase_order.errors.full_messages).to include("Phone number は10桁または11桁の数字で入力してください")
+      end
+      it '電話番号に半角数字以外が含まれている場合は購入できない' do
+        @purchase_order.phone_number = '090-1234-5678'
+        @purchase_order.valid?
+        expect(@purchase_order.errors.full_messages).to include("Phone number は10桁または11桁の数字で入力してください")
       end
       it 'userが紐付いていないと保存できない' do
         @purchase_order.user_id = nil
